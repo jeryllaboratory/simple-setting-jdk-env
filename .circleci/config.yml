@@ -3,7 +3,7 @@ version: 2.1
 executors:
   default:
     docker:
-      - image: circleci/openjdk:17  # Use an appropriate OpenJDK image
+      - image: openjdk:17-alpine3.14 # Use an appropriate OpenJDK image
     working_directory: ~/project
 
 jobs:
