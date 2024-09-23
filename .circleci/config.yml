@@ -1,0 +1,27 @@
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: circleci/openjdk:17  # Use an appropriate OpenJDK image
+    working_directory: ~/project
+
+jobs:
+  check-jdk-version:
+    executor: default
+    steps:
+      - checkout  # This checks out your code (though it's not necessary just for JDK version check)
+      
+      - run:
+          name: Check JDK Version
+          command: java -version  # This command checks the JDK version
+
+      - run:
+          name: Check Environment Variables for JDK
+          command: echo $JAVA_HOME  # This checks where JDK is installed
+
+workflows:
+  version: 2
+  jdk-check-workflow:
+    jobs:
+      - check-jdk-version
